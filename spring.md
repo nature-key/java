@@ -412,7 +412,20 @@ https://www.jianshu.com/p/3944792a5fff
 
 
 70.返回Json用什么注解？
-    
+
+
+71.spring mvc 执行流程
+
+      1.用户请求到DispatcherServer
+      2.DispatcherServlet请求HandlerMapping，获取Handler
+      3,返回秀英的一个Handler链
+      4.DispatcherServlet根据Handler执行HandlerApater一系列操作，数据转换，数据验证,参数封装
+      5.执行Handler操作,返回ModelAndView 
+      6.HandlerApater将Modelandview返回给DispatchServlet
+      7.交给试图解析器 ViewReslover
+      8.ViewReslover返回view
+      9.DispatchServer渲染view
+      10,响应给客户端
    
 
    
