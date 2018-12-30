@@ -77,13 +77,66 @@
 
 、你如何理解 Spring Boot 中的 Starters？
 
-  一个启动器，
+  Starters可以理解为启动器，它包含了一系列可以集成到应用里面的依赖包，你可以一站式集成 Spring 及其他技术，而不需要到处找示例代码和依赖包。如你想使用 Spring JPA 访问数据库，只要加入 spring-boot-starter-data-jpa 启动器依赖就能使用了
 
 12、如何在 Spring Boot 启动的时候运行一些特定的代码？
+   1.commandlineRuner
+   2.applicationRunner
+   
+   实现接口api
+    
 13、Spring Boot 有哪几种读取配置的方式？
+
+   1.@values
+   2.PropertySource
+   3.ConfigurationProperties
+   4.Environment
+
 14、Spring Boot 支持哪些日志框架？推荐和默认的日志框架是哪个？
+
+   java util loging  
+   
+   logback
+   
+   log4j2
+   
+   默认logback
+   
 15、SpringBoot 实现热部署有哪几种方式？
+
+    1.spring-boot-devtool
+    2.
 16、你如何理解 Spring Boot 配置加载顺序？
+    
+     1.命令》环境变脸》包外properties>包下properties>包外yaml>报下yaml>@Configuration`配置文件上 `@PropertySource` 注解加载的参数；>`SpringApplication.setDefaultProperties` 指定）；
+    
 17、Spring Boot 如何定义多套不同环境配置？
+
+   application.preperties
+   
+   application-dev.preperties
+   
+   application-test.preperties
+   
+   application-prod.preperties
+   
+   profile:配置不同环境的变量
+   
+    yaml配置
+      spring.profile.active=dev
+      
+      
 18、Spring Boot 可以兼容老 Spring 项目吗，如何做？
+可以
 20、Spring Boot 2.X 有什么新特性？与 1.X 有什么区别？
+
+   1.springboot2 支持1.8
+   2.支持kotlin1.2
+   3.配置变更
+   4.第三方版本的升级
+      spring 5
+    5.响应式 Spring 编程支持
+    6.HTTP/2 支持
+    7.配置属性绑定
+
+   
