@@ -131,12 +131,23 @@
 20、Spring Boot 2.X 有什么新特性？与 1.X 有什么区别？
 
    1.springboot2 支持1.8
+   
    2.支持kotlin1.2
+   
    3.配置变更
+   
    4.第三方版本的升级
+   
       spring 5
+      
     5.响应式 Spring 编程支持
+    
     6.HTTP/2 支持
+    
     7.配置属性绑定
+    
+    8.web加强
+    
+       提供了一个 spring-boot-starter-json 启动器对 JSON 读写的支持
 
    
