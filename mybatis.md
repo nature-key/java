@@ -82,4 +82,19 @@
 18、为什么说Mybatis是半自动ORM映射工具？它与全自动的区别在哪里
   
     hibernate 是全自动映射，是根据对象关系获取数据，而mybatis的关系对象是根据sql获取数据
+    
+    
+    mybatis执行原理
+    
+     1.根据配置文件初始化configuration对象
+     2.穿件defaultsqlsessrion对象包含configuration以及执行器executor
+     3.defatultsqlsession。getmapper获取去代理对象
+     4.执行正山改查
+           1.调用defaultsqlseaaion的正删改查
+           2.创建statementHandler
+                预编译处理 ，设置参数，处理结果
+           3.parameterhANDLER给sql设置参数
+           4.statementHandler执行增删改查，
+           5.resultsetHandler封装结构
+     3.
 
