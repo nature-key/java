@@ -46,3 +46,27 @@ ElasticSearch中的分析器是什么？
  
 
 启用属性，索引和存储的用途是什么？
+
+
+Elasticsearch是如何实现Master选举的？
+
+Elasticsearch中的节点（比如共20个），其中的10个选了一个master，另外10个选了另一个master，怎么办？
+
+客户端在和集群连接时，如何选择特定的节点执行请求的？
+
+详细描述一下Elasticsearch更新和删除文档的过程。
+
+详细描述一下Elasticsearch搜索的过程。
+
+在Elasticsearch中，是怎么根据一个词找到对应的倒排索引的
+
+Elasticsearch在部署时，对Linux的设置有哪些优化方法？
+
+对于GC方面，在使用Elasticsearch时要注意什么？
+
+在并发情况下，Elasticsearch如果保证读写一致？
+
+如何监控Elasticsearch集群状态？
+
+拼写纠错是如何实现的
+详细描述一下Elasticsearch索引文档的过程。
