@@ -49,14 +49,41 @@ ElasticSearch中的分析器是什么？
 
 
 Elasticsearch是如何实现Master选举的？
+ 
+ 1.es主节点选择是ZenDiscovery模块负责的，
+ 2.ping所有的节点返回pingrepose
+ 3.过滤成为maste的节点
+ 4.重actienode选举
+ 5.获得法定人数
+ 6.是否是本节点 不是计入集群啊
+ 7等加入这达到法定任大虎，排除分master资格的节点图片小
+ 8成为主节点
 
 Elasticsearch中的节点（比如共20个），其中的10个选了一个master，另外10个选了另一个master，怎么办？
+
+ 根据（n/2+1）投票选择主节点
+ 如果有两个，智能修改唯一的一个master候选，其他所谓data节点，避免脑裂
 
 客户端在和集群连接时，如何选择特定的节点执行请求的？
 
 详细描述一下Elasticsearch更新和删除文档的过程。
+ 1.更新删除都是写操作，
+ 2.每一个请求会到达固定的shard 根据路由计算
+ 3.存在buffer 人后进行refush进入欧式catche  ,同时生成tranlog
+ 4.提交到disk 叫做fulsh,清空buffer和创建显得seglenment
+ 5flush默认30,或者tranlog过大默认512M
+ 
+ 
 
 详细描述一下Elasticsearch搜索的过程。
+
+ 1请求到每一个shard
+ 2,每一个shard排毒返回 from fsize
+ 3.返回给协调节点，进行排除，
+ 4.协调节点获取到数据，id,在批量到响应的shard获取丰富的字段
+ 5.返回给协调节点，返回给客户端
+
+
 
 在Elasticsearch中，是怎么根据一个词找到对应的倒排索引的
 
@@ -65,6 +92,10 @@ Elasticsearch在部署时，对Linux的设置有哪些优化方法？
 对于GC方面，在使用Elasticsearch时要注意什么？
 
 在并发情况下，Elasticsearch如果保证读写一致？
+
+ 1.实现乐观锁。版本控制
+ 2.一致性 all  qunum one  默认是quorum,大部分分片可用进行写操作
+ 
 
 如何监控Elasticsearch集群状态？
 
