@@ -91,13 +91,28 @@ Elasticsearch在部署时，对Linux的设置有哪些优化方法？
 
 对于GC方面，在使用Elasticsearch时要注意什么？
 
+1.倒排索引字典是缓存在常驻内存，无法GC,需要监控data node 的segment memory
+2.一般的缓存，index ，filter filed catch 设置合理的大小，判断最坏的情况判断head是否够用
+3.避免返回大量数据，如果需要使用scorll api
+4.cluster state 常驻内存，无法水平扩展，可以分成多个集群
+5.合理设置heap的带下，根据实际情况，设置heap大小，需要监控上heap大小
+
 在并发情况下，Elasticsearch如果保证读写一致？
 
  1.实现乐观锁。版本控制
  2.一致性 all  qunum one  默认是quorum,大部分分片可用进行写操作
+ 可以通过版本号使用乐观并发控制，以确保新版本不会被旧版本覆盖，由应用层来处理具体的冲突；
+ 
+另外对于写操作，一致性级别支持quorum/one/all，默认为quorum，即只有当大多数分片可用时才允许写操作。但即使大多数可用，也可能存在因为网络等原因导致写入
+
+副本失败，这样该副本被认为故障，分片将会在一个不同的节点上重建。
+
+对于读操作，可以设置replication为sync(默认)，这使得操作在主分片和副本分片都完成后才会返回；如果设置replication为async时，也可以通过设置搜索请求参
+
+数_preference为primary来查询主分片，确保文档是最新版本。
  
 
 如何监控Elasticsearch集群状态？
+Marvel 让你可以很简单的通过 Kibana 监控 Elasticsearch。你可以实时查看你的集群健康状态和性能，也可以分析过去的集群、索引和节点指标
 
 拼写纠错是如何实现的
-详细描述一下Elasticsearch索引文档的过程。
